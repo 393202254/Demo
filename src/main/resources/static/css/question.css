@@ -1,0 +1,103 @@
+body{
+    background-color: #e3e3e3;
+}
+main{
+    background-color: white;
+    margin-top: 60px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.img-circle{
+    width: 50px;
+    height: 50px;
+}
+.img-rounded{
+    width: 40px;
+    height: 40px;
+}
+.comment{
+
+}
+.media{
+    margin: 10px;
+}
+.media-body{
+    padding-top: 4px;
+}
+.comment-btn{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.comment_sp{
+    margin-top: 0;
+}
+.count{
+    margin-top: 100px;
+}
+.menu .glyphicon{
+    margin-right: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.glyphicon:hover{
+    color: #265a88;
+}
+.menu{
+    color: #999;
+    margin-top: 5px;
+}
+.comments{
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+#comment-submit{
+    margin-bottom: -12px;
+}
+.sub-comments{
+    border: #c4e3f3 solid 1px;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding-top: 20px;
+}
+.sub-comments .btn{
+    margin: 10px 0px;
+}
+.glyphicon-pencil{
+    padding: 5px;
+}
+.menu > .active{
+    color: #265a88;
+}
+.label-info{
+    margin-right: 10px;
+}
+.question-tags{
+    margin: -12px 0 -12px 0;
+}
+.ul-ralated{
+    list-style: none;
+    font-size: 12px;
+    padding-left: 5px;
+    text-decoration: none;
+}
+.a-related{
+    cursor: pointer;
+
+}
+.a-related:link{
+    text-decoration:none;
+}
+.a-related:visited{
+    text-decoration:none;
+}
+.a-related:hover{
+    text-decoration:none;
+    background-color: #9acfea;
+}
+.a-related:active{
+    text-decoration:none;
+}
+.img-ad{
+    width: 100%;
+}
