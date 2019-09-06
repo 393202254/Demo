@@ -46,5 +46,34 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发现</h2>
+            <hr>
+
+            <div class="media" th:each="question:${questions}">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object img-rounded" style="width: 38px;" th:src="${question.user.avatar_url}">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading" th:text="${question.title}">
+                        <span th:text="${question.description}"></span>
+                    </h4>
+                    <span class="text-desc"><span>1</span> 个回复 • <span>7</span> 次浏览 • <span>2019-09-06 15:00</span></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <br>
+            <h3>热门话题</h3>
+
+        </div>
+
+    </div>
+</div>
 </body>
 </html>

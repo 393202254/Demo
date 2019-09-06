@@ -22,43 +22,46 @@ public class PublishController {
     private QuestionMapper questionMapper;
     @Autowired
     private UserMapper userMapper;
+
     @GetMapping("/publish")
-    public  String publish(){
+    public String publish() {
         return "publish";
     }
+
     @PostMapping("/publish")
     public String InsertQuestion(
-            @RequestParam(name="title")String title,
-            @RequestParam(name="description")String description,
-            @RequestParam(name="tag")String tag,
+            @RequestParam(name = "title") String title,
+            @RequestParam(name = "description") String description,
+            @RequestParam(name = "tag") String tag,
             HttpServletRequest request,
             Model model
-    ){
-        model.addAttribute("title",title);
-        model.addAttribute("description",description);
-        model.addAttribute("tag",tag);
-        if (title ==null||title==""||description ==null||description==""||tag==null||tag==""){
-            model.addAttribute("error","标题或问题或标签不能为空");
+    ) {
+        model.addAttribute("title", title);
+        model.addAttribute("description", description);
+        model.addAttribute("tag", tag);
+        if (title == null || title == "" || description == null || description == "" || tag == null || tag == "") {
+            model.addAttribute("error", "标题或问题或标签不能为空");
             return "/publish";
         }
-        User user=null;
-        Cookie[] cookies=request.getCookies();
-        for (Cookie cookie:cookies){
-            if (cookie.getName().equals("token")){
-                String token=cookie.getValue();
-                 user=userMapper.findByToken(token);
-                if (user!=null){
-                    request.getSession().setAttribute("user",user);
-                }
-                break;
+        User user = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null)
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    String token = cookie.getValue();
+                    user = userMapper.findByToken(token);
+                    if (user != null) {
+                        request.getSession().setAttribute("user", user);
+                    }
+                    break;
                 }
             }
         if (user == null) {
-            model.addAttribute("error","用户未登录");
+            model.addAttribute("error", "用户未登录");
             return "publish";
         }
 
-        Question question=new Question();
+        Question question = new Question();
         question.setTitle(title);
         question.setDescription(description);
         question.setTag(tag);

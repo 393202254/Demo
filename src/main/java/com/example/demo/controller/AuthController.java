@@ -23,34 +23,36 @@ public class AuthController {
     @Autowired
     private GithubProvider githubProvider;
     @Value("${AccessToken.client.id}")
-   private String clientID;
+    private String clientID;
     @Value("${AccessToken.client.secret}")
-   private String clientSecret;
+    private String clientSecret;
     @Value("${AccessToken.client.url}")
-   private String redirectUrl;
+    private String redirectUrl;
     @Autowired
     private UserMapper userMapper;
+
     @GetMapping("/callback")
-    public String callBack(@RequestParam(name="code")String code, @RequestParam(name="state")String state, HttpServletRequest request, HttpServletResponse httpServletResponse){
+    public String callBack(@RequestParam(name = "code") String code, @RequestParam(name = "state") String state, HttpServletRequest request, HttpServletResponse httpServletResponse) {
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setCode(code);
         accessTokenDTO.setClient_id(clientID);
         accessTokenDTO.setClient_secret(clientSecret);
         accessTokenDTO.setRedirect_url(redirectUrl);
         accessTokenDTO.setState(state);
-        String accesstoken=githubProvider.getAccessToken(accessTokenDTO);
-        GithubUserDTO user=githubProvider.getUser(accesstoken);
-        User user1=new User();
+        String accesstoken = githubProvider.getAccessToken(accessTokenDTO);
+        GithubUserDTO user = githubProvider.getUser(accesstoken);
+        User user1 = new User();
         user1.setAccountId(String.valueOf(user.getId()));
         user1.setCreateTime(System.currentTimeMillis());
         user1.setName(user.getName());
         user1.setToken(UUID.randomUUID().toString());
+        user1.setAvatar_url(user.getAvatar_url());
         userMapper.insert(user1);
-        if (user !=null){
-            httpServletResponse.addCookie(new Cookie("token",user1.getToken()));
+        if (user != null) {
+            httpServletResponse.addCookie(new Cookie("token", user1.getToken()));
 
             return "redirect:/";
-        }else{
+        } else {
             return "redirect:/";
         }
 
