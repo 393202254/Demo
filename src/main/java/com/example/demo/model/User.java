@@ -10,7 +10,7 @@ public class User {
     private  String token;
     private  Long createTime;
     private  Long modified;
-    private  String avatar_url;
+    private  String avatarUrl;
 
 
 }

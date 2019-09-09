@@ -46,7 +46,7 @@ public class AuthController {
         user1.setCreateTime(System.currentTimeMillis());
         user1.setName(user.getName());
         user1.setToken(UUID.randomUUID().toString());
-        user1.setAvatar_url(user.getAvatar_url());
+        user1.setAvatarUrl(user.getAvatarUrl());
         userMapper.insert(user1);
         if (user != null) {
             httpServletResponse.addCookie(new Cookie("token", user1.getToken()));
